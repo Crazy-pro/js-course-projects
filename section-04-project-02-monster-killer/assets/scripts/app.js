@@ -5,6 +5,8 @@ const HEAL_VALUE = 20
 
 const MODE_ATTACK = 'ATTACK'
 const MODE_STRONG_ATTACK = 'STRONG_ATTACK'
+const LOG_EVENT_PLAYER_ATTACK = 'PLAYER_ATTACK'
+const LOG_EVENT_PLAYER_STRONG_ATTACK = 'PLAYER_STRONG_ATTACK'
 
 const eneteredValue = prompt('Max life for u and the monste. ', '100')
 
@@ -24,6 +26,12 @@ function reset() {
   currentMonsterHealth = chosenMaxLife
   currentPlayerHealth = chosenMaxLife
   resetGame(chosenMaxLife)
+}
+
+function writeToLog(event){
+  if(event) {
+    
+  }
 }
 
 function endRound() {
