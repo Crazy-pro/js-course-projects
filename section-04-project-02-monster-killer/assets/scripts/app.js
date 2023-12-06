@@ -130,12 +130,15 @@ function healPlayerHandler() {
   }
   increasePlayerHealth(healValue)
   currentPlayerHealth += healValue
-  writeToLog(logEvent, damage, currentMonsterHealth, currentPlayerHealth)
+  writeToLog(LOG_EVENT_PLAYER_HEAL, healValue, currentMonsterHealth, currentPlayerHealth)
   endRound()
 }
 
-function 
+function showLogshandler(){
+  console.log(battleLog)
+}
+
 attackBtn.addEventListener('click', attackHandler)
 strongAttackBtn.addEventListener('click', strongAttackHandler)
 healBtn.addEventListener('click', healPlayerHandler)
-logBtn.addEventListener('click', )
+logBtn.addEventListener('click', showLogshandler)
