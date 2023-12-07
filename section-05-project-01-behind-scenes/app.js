@@ -41,3 +41,6 @@ var lastName = 'Anderson'
 // "someText"
 // surName = 'something'
 
+let person = { name: 'Alex'}
+
+person = null
