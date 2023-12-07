@@ -137,15 +137,17 @@ function showLogshandler(){
   // } while(k < battleLog.length)
 
   let = 0
-  for(const log of battleLog){
+  outerLoop: for(const log of battleLog){
     // if(!lastLogEntry && lastLogEntry !== 0 || lastLogEntry < i){
       console.log(`#${i++}`)
       // continue
+      // continue outerLoop
       for(const key in log){
         console.log(`${key}: ${log[key]}`)
       }
       lastLogEntry = i
       // break
+      // break outerLoop
     // }
   }
 }
