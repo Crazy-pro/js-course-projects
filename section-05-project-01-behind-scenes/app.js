@@ -19,9 +19,13 @@ if (firstName === 'Max'){
     console.log(hobbies)
 }
 
+function getFirstName() {
+    return prompt('Your name: ', '')
+}
+
 function greet(){
     var age = 30
-    var firstName = 'Alex'
+    var firstName = getFirstName()
     console.log(firstName, age)
 }
 
