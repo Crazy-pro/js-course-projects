@@ -13,12 +13,32 @@ const LOG_EVENT_GAME_OVER = 'GAME_OVER'
 
 const eneteredValue = prompt('Max life for u and the monste. ', '100')
 
-let chosenMaxLife = parseInt(eneteredValue)
 let battleLog = []
 let lastLogEntry
 
-if(isNaN(chosenMaxLife) || chosenMaxLife <= 0){
+function getMaxLifeValues() {
+  const enteredValue = prompt('MAx life for u and the moster', '100')
+  const parsedValue = parseInt(eneteredValue)
+
+  if(isNaN(parsedValue) || parsedValue <= 0){
+    throw {
+        message: 'Invalid user Input!',
+        statusCode: '409'
+      }
+  }
+  return parsedValue
+}
+
+let chosenMaxLife
+try {
+  chosenMaxLife = getMaxLifeValues()
+} catch (error){
+  // chosenMaxLife = 100
+  // alert('U inputed invalid value. Default value of 100 was applied!')
+  // throw error;
+} finally {
   chosenMaxLife = 100
+  alert('U inputed invalid value. Default value of 100 was applied!')
 }
 
 let currentMonsterHealth = chosenMaxLife
