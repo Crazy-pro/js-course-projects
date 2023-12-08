@@ -13,7 +13,13 @@ const start = function startGame() {
 
 // person.greet()
 
-console.dir(start)
-console.log(typeof start)
+// function is an object
+// console.dir(start)
+// console.log(typeof start)
+
+// anonymous function()
+// startGameBtn.addEventListener('click', function() {
+//     console.log('Game is starting...')
+// })
 
 startGameBtn.addEventListener('click', start)
