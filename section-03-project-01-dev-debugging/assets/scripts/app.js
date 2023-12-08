@@ -83,7 +83,33 @@ function divide() {
   writeToLog('Divide', initialResult, enteredNum, currentResult)
 }
 
-addBtn.addEventListener('click', add)
-subtractBtn.addEventListener('click', substract)
-multiplyBtn.addEventListener('click', multiply)
-divideBtn.addEventListener('click', divide)
+function calculate(operation) {
+  const enteredNum = getUserEnteredNum()
+  const initialResult = currentResult
+  let operator
+  if(operation === 'ADD'){
+    currentResult += enteredNum
+    operator = '+'
+  } else if(operation === 'SUBSTRACT'){
+    currentResult -= enteredNum
+    operator = '-'
+  } else if(operation === 'MULTIPLY'){
+    currentResult *= enteredNum
+    operator = '*'
+  } else if(operation === 'DIVIDE'){
+    currentResult /= enteredNum
+    operator = '/'
+  } 
+  createAndWriteOutput(operator, initialResult, enteredNum)
+  writeToLog(operation, initialResult, enteredNum, currentResult)
+}
+
+addBtn.addEventListener('click', calculate.bind(this, 'ADD'))
+subtractBtn.addEventListener('click', calculate.bind(this, 'SUBSTRACT'))
+multiplyBtn.addEventListener('click', calculate.bind(this, 'MULTIPLY'))
+divideBtn.addEventListener('click', calculate.bind(this, 'DIVIDE'))
+
+// addBtn.addEventListener('click', add)
+// subtractBtn.addEventListener('click', substract)
+// multiplyBtn.addEventListener('click', multiply)
+// divideBtn.addEventListener('click', divide)
