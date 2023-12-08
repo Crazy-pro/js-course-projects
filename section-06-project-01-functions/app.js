@@ -69,7 +69,24 @@ startGameBtn.addEventListener('click', () => {
     alert(message)
 })
 
+const sumUp = (a, b, ...nums) => {
+    let sum = 0
+    for(const num of nums){
+        sum += num
+    }
+    return sum
+}
 
+const substractUp = function() {
+    let sum = 0
+    for(const num of arguments){ // don't use this default arguments keyword
+        sum -= num
+    }
+    return sum
+}
+
+console.log(sumUp(1, 3, 4, 5, 6, 7))
+console.log(substractUp(1, 3, 4, 5, 6, 7))
 
 // const start = function startGame() {
 //     console.log('Game is starting...')
