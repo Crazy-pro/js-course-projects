@@ -95,6 +95,10 @@ const showResult = (result, message) => {
     alert(message + ' ' + result)
 }
 
+showResult.call
+
+showResult.apply
+
 combine(showResult.bind(this, 'The result after adding all numbers is: ' ), 'ADD', 1, 3, 4, 'sdfsdf', 5, 6, 7)
 combine(showResult.bind(this, 'The result after adding all numbers is: ' ), 'ADD', 1, 3, 4, 5, 6, 9, 7)
 combine(showResult.bind(this, 'The result after substracting all numbers is: ' ), 'SUBSTRACT', 1, 3, 4, 5, 6, 7)
