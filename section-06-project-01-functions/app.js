@@ -1,16 +1,19 @@
 const startGameBtn = document.getElementById('start-game-btn')
 
-function startGame() {
+const start = function startGame() {
     console.log('Game is starting...')
 }
 
-const person = {
-    name: 'Max',
-    greet: function greet() {
-        console.log('Hi there')
-    }
-}
+// const person = {
+//     name: 'Max',
+//     greet: function greet() {
+//         console.log('Hi there')
+//     }
+// }
 
-person.greet()
+// person.greet()
 
-startGameBtn.addEventListener('click', startGame)
+console.dir(start)
+console.log(typeof start)
+
+startGameBtn.addEventListener('click', start)
