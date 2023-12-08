@@ -61,7 +61,7 @@ startGameBtn.addEventListener('click', () => {
     } else {
         message += 'lost.' 
     }
-    console.log(message)
+    alert(message)
 })
 
 
