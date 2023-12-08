@@ -70,9 +70,11 @@ startGameBtn.addEventListener('click', () => {
 })
 
 const sumUp = (a, b, ...nums) => {
+    const validateNumber = (num) => isNaN(num) ? 0 : num
+
     let sum = 0
     for(const num of nums){
-        sum += num
+        sum += validateNumber(num)
     }
     return sum
 }
