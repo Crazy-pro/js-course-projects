@@ -12,6 +12,7 @@ const confirmAddMovieButton = document.querySelector('.btn--success')
 const userInputs = addMovieModal.querySelectorAll('input')
 const entryTextSection = document.getElementById('entry-text')
 const deleteMovieModal = document.getElementById('delete-modal')
+
 const movies = []
 
 const toggleBackdrop = () => {
@@ -78,7 +79,7 @@ const startDeleteMovieHandler = movieId => {
 const renderNewMovie = (movie) => {
     const newMovieElement = document.createElement('li')
     newMovieElement.className = 'movie-element'
-    newMovieElement.insertAdjacentHTML = `
+    newMovieElement.innerHTML = `
     <div class="movie-element__image">
         <img src="${movie.image}" alt="${title}">
     </div>
