@@ -2,7 +2,7 @@
 const element1 = document.getElementById('task-1')
 const element2 = document.querySelector('li')
 
-element1.style.color = 'black'
+element1.style.color = 'white'
 element2.style.backgroundColor = 'black'
 
 // Task 2:
@@ -15,4 +15,4 @@ element5.textContent = 'Assignment also solved'
 
 // const h1 = document.querySelector('h1')
 const h1 = document.getElementsByTagName('h1')
-h1[0].textContent = 'Assignment - solved'
+h1[0].textContent = 'Assignment - Solved!'
