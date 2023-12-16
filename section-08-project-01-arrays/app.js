@@ -25,3 +25,15 @@
 // }
 
 // console.log(personalData[1])
+
+const hobbies = ['Cooking', 'Sports']
+hobbies.push('Gaming')
+hobbies.unshift('Reading')
+const deletedValue = hobbies.pop()
+const removedValue = hobbies.shift()
+
+hobbies[1] = 'Coding'
+hobbies[5] = 'Reading'
+console.log(hobbies)
+console.log(deletedValue)
+console.log(removedValue)
