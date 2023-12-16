@@ -12,27 +12,38 @@
 //     console.log(entry)
 // }
 
-const person1 = {name:'Alex'}
-const person2 = {name:'Max'}
+// const person1 = {name:'Alex'}
+// const person2 = {name:'Max'}
 
-const personData = new Map([[person1,[{date:'today', price: 10}]]])
+// const personData = new Map([[person1,[{date:'today', price: 10}]]])
 
-personData.set(person2, [{age:26, surname:'Klimchuk'}])
+// personData.set(person2, [{age:26, surname:'Klimchuk'}])
 
 
-console.log(personData)
-console.log(personData.get(person1))
+// console.log(personData)
+// console.log(personData.get(person1))
 
-for (const [key, value] of personData.entries()) {
-    console.log(key, value)
-}
+// for (const [key, value] of personData.entries()) {
+//     console.log(key, value)
+// }
 
-for (const key of personData.keys()) {
-    console.log(key)
-}
+// for (const key of personData.keys()) {
+//     console.log(key)
+// }
 
-for (const value of personData.values()) {
-    console.log(value)
-}
+// for (const value of personData.values()) {
+//     console.log(value)
+// }
 
-console.log(personData.size)
+// console.log(personData.size)
+
+let person = {name:'Alex'}
+
+const persons = new WeakSet()
+persons.add(person)
+
+// ... some operations
+
+person = null
+
+console.log(persons)
