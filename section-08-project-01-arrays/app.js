@@ -98,3 +98,15 @@ const taxAdjustedPrices = prices.map((price, id, prices) => {
     return priceObject
 })
 console.log(prices, taxAdjustedPrices)
+
+const sortedPrices = prices.sort()
+const revercedSortedPrices = prices.sort((a, b) => {
+    if(a > b)
+        return 1
+    else if(a===b)
+        return 0
+    else
+        return -1
+})
+console.log(sortedPrices)
+console.log(revercedSortedPrices.reverse())
