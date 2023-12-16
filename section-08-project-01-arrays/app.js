@@ -114,3 +114,7 @@ console.log(revercedSortedPrices.reverse())
 const filteredArr = prices.filter(price => price > 20)
 
 console.log(filteredArr)
+
+const sum = prices.reduce((prevVal, curVal, curId, prices) => {
+    return prevVal + curVal
+}, 0)
