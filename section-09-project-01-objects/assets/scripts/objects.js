@@ -1,6 +1,6 @@
 const person = {
-  name: 'Max',
-  age: 30,
+  name: 'Alex',
+  age: 25,
   hobbies: ['Sports', 'Cooking'],
   greet: function() {
     alert('Hi there!');
