@@ -26,21 +26,29 @@
 
 // console.log(personalData[1])
 
-const hobbies = ['Cooking', 'Sports']
-hobbies.push('Gaming')
-hobbies.unshift('Reading')
-const deletedValue = hobbies.pop()
-const removedValue = hobbies.shift()
+// const hobbies = ['Cooking', 'Sports']
+// hobbies.push('Gaming')
+// hobbies.unshift('Reading')
+// const deletedValue = hobbies.pop()
+// const removedValue = hobbies.shift()
 
-hobbies[1] = 'Coding'
-// hobbies[5] = 'Reading'
+// hobbies[1] = 'Coding'
+// // hobbies[5] = 'Reading'
 
-console.log(hobbies, hobbies[3])
-console.log(deletedValue)
-console.log(removedValue)
+// console.log(hobbies, hobbies[3])
+// console.log(deletedValue)
+// console.log(removedValue)
 
-hobbies.slice(1, 0, 'Good food')
-console.log(hobbies)
+// hobbies.slice(1, 0, 'Good food')
+// console.log(hobbies)
 
-hobbies.splice(0, 1)
-console.log(hobbies)
+// hobbies.splice(0, 1)
+// console.log(hobbies)
+
+const testData = [1, 5, 7 , 10]
+const storedData = testData.slice(0, 3)
+const newArr = storedData.slice(2)
+
+testData.push(9.75)
+
+console.log(storedData, newArr, testData.slice())
