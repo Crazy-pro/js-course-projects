@@ -33,7 +33,14 @@ const deletedValue = hobbies.pop()
 const removedValue = hobbies.shift()
 
 hobbies[1] = 'Coding'
-hobbies[5] = 'Reading'
-console.log(hobbies)
+// hobbies[5] = 'Reading'
+
+console.log(hobbies, hobbies[3])
 console.log(deletedValue)
 console.log(removedValue)
+
+hobbies.slice(1, 0, 'Good food')
+console.log(hobbies)
+
+hobbies.splice(0, 1)
+console.log(hobbies)
