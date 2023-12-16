@@ -56,6 +56,9 @@ console.log(testData.indexOf(10))
 console.log(storedData.indexOf(-15))
 console.log(newArr.lastIndexOf(5))
 console.log(newArr.lastIndexOf(45))
+console.log(newArr.includes(1))
+console.log(newArr.includes(8.94))
+console.log(newArr.includes(18.94))
 
 const personData = [{name: 'Alex'}, {name: 'Ann'}]
 console.log(personData.indexOf({name: 'Alex'}))
