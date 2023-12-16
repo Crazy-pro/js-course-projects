@@ -47,7 +47,7 @@
 
 const testData = [1, 5, 7 , 10]
 const storedData = testData.slice(0, 3)
-const newArr = storedData.slice(2)
+const newArr = [1, 5, 17, 8.94].concat(storedData)
 
 testData.push(9.75)
 
