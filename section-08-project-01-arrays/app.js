@@ -75,17 +75,26 @@
 // console.log(annId)
 // console.log(ann.name = 'Anna')
 
+// const prices = [10, 59, 56.98]
+// const tax = 0.19
+// const taxAdjustedPrices = []
+
+// for (const price of prices) {
+//     taxAdjustedPrices.push(price * (1 + tax))
+// }
+// console.log(taxAdjustedPrices)
+
+// prices.forEach((price, id, prices) => {
+//     const priceObject = { index: id, taxAdjustedPrice: price * (1 + tax)}
+//     taxAdjustedPrices.push(priceObject)
+// })
+// console.log(taxAdjustedPrices)
+
 const prices = [10, 59, 56.98]
 const tax = 0.19
-const taxAdjustedPrices = []
 
-for (const price of prices) {
-    taxAdjustedPrices.push(price * (1 + tax))
-}
-console.log(taxAdjustedPrices)
-
-prices.forEach((price, id, prices) => {
+const taxAdjustedPrices = prices.map((price, id, prices) => {
     const priceObject = { index: id, taxAdjustedPrice: price * (1 + tax)}
-    taxAdjustedPrices.push(priceObject)
+    return priceObject
 })
-console.log(taxAdjustedPrices)
+console.log(prices, taxAdjustedPrices)
