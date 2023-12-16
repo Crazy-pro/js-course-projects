@@ -45,32 +45,47 @@
 // hobbies.splice(0, 1)
 // console.log(hobbies)
 
-const testData = [1, 5, 7 , 10]
-const storedData = testData.slice(0, 3)
-const newArr = [1, 5, 17, 5, 5, 8.94].concat(storedData)
+// const testData = [1, 5, 7 , 10]
+// const storedData = testData.slice(0, 3)
+// const newArr = [1, 5, 17, 5, 5, 8.94].concat(storedData)
 
-testData.push(9.75)
+// testData.push(9.75)
 
-console.log(storedData, newArr, testData.slice())
-console.log(testData.indexOf(10))
-console.log(storedData.indexOf(-15))
-console.log(newArr.lastIndexOf(5))
-console.log(newArr.lastIndexOf(45))
-console.log(newArr.includes(1))
-console.log(newArr.includes(8.94))
-console.log(newArr.includes(18.94))
+// console.log(storedData, newArr, testData.slice())
+// console.log(testData.indexOf(10))
+// console.log(storedData.indexOf(-15))
+// console.log(newArr.lastIndexOf(5))
+// console.log(newArr.lastIndexOf(45))
+// console.log(newArr.includes(1))
+// console.log(newArr.includes(8.94))
+// console.log(newArr.includes(18.94))
 
-const personData = [{name: 'Alex'}, {name: 'Ann'}]
-console.log(personData.indexOf({name: 'Alex'}))
+// const personData = [{name: 'Alex'}, {name: 'Ann'}]
+// console.log(personData.indexOf({name: 'Alex'}))
 
-const ann = personData.find((person, id, persons) => {
-    return person.name === 'Ann'
+// const ann = personData.find((person, id, persons) => {
+//     return person.name === 'Ann'
+// })
+
+// const annId = personData.findIndex((person, id, persons) => {
+//     return person.name === 'Ann'
+// })
+
+// console.log(ann)
+// console.log(annId)
+// console.log(ann.name = 'Anna')
+
+const prices = [10, 59, 56.98]
+const tax = 0.19
+const taxAdjustedPrices = []
+
+for (const price of prices) {
+    taxAdjustedPrices.push(price * (1 + tax))
+}
+console.log(taxAdjustedPrices)
+
+prices.forEach((price, id, prices) => {
+    const priceObject = { index: id, taxAdjustedPrice: price * (1 + tax)}
+    taxAdjustedPrices.push(priceObject)
 })
-
-const annId = personData.findIndex((person, id, persons) => {
-    return person.name === 'Ann'
-})
-
-console.log(ann)
-console.log(annId)
-console.log(ann.name = 'Anna')
+console.log(taxAdjustedPrices)
