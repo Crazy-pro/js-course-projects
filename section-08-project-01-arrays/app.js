@@ -110,3 +110,9 @@ const revercedSortedPrices = prices.sort((a, b) => {
 })
 console.log(sortedPrices)
 console.log(revercedSortedPrices.reverse())
+
+const filteredArr = prices.filter((price, id) => {
+    return price > 20
+})
+
+console.log(filteredArr)
