@@ -50,7 +50,7 @@ const addMovieHandler = () => {
       title,
       [extraName]: extraValue
     },
-    id: Math.random()
+    id: Math.random().toString()
   }
   
   movies.push(newMovie)
