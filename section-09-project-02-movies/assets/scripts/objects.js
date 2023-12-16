@@ -52,6 +52,8 @@ const addMovieHandler = () => {
     return
   }
 
+  // this 
+
   const newMovie = {
     info: {
       title,
@@ -68,7 +70,9 @@ const addMovieHandler = () => {
   renderMovies()
 }
 
-const searchMovieHandler = function() {
+// this 
+
+const searchMovieHandler = () => {
   console.log(this)
   const filterTerm = document.getElementById('filter-title').value
   renderMovies(filterTerm)
