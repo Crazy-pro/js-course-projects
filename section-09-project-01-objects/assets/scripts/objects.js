@@ -9,7 +9,8 @@ const person = {
   hobbies: ['Sports', 'Cooking'],
   greet: function() {
     alert('Hi there!');
-  }
+  },
+  1.5: 'hello'
 }
 
 person.isAdmin = true
@@ -21,3 +22,4 @@ person.greet();
 
 console.log(person)
 console.log(person['first Name'])
+console.log(person[1.5])
