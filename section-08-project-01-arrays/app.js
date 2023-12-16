@@ -47,8 +47,15 @@
 
 const testData = [1, 5, 7 , 10]
 const storedData = testData.slice(0, 3)
-const newArr = [1, 5, 17, 8.94].concat(storedData)
+const newArr = [1, 5, 17, 5, 5, 8.94].concat(storedData)
 
 testData.push(9.75)
 
 console.log(storedData, newArr, testData.slice())
+console.log(testData.indexOf(10))
+console.log(storedData.indexOf(-15))
+console.log(newArr.lastIndexOf(5))
+console.log(newArr.lastIndexOf(45))
+
+const personData = [{name: 'Alex'}, {name: 'Ann'}]
+console.log(personData.indexOf({name: 'Ann'}))
