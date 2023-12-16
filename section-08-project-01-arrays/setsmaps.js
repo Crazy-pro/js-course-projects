@@ -35,4 +35,4 @@ for (const value of personData.values()) {
     console.log(value)
 }
 
-console.log(personData.size())
+console.log(personData.size)
