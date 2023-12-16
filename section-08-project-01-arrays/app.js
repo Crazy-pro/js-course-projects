@@ -58,4 +58,16 @@ console.log(newArr.lastIndexOf(5))
 console.log(newArr.lastIndexOf(45))
 
 const personData = [{name: 'Alex'}, {name: 'Ann'}]
-console.log(personData.indexOf({name: 'Ann'}))
+console.log(personData.indexOf({name: 'Alex'}))
+
+const ann = personData.find((person, id, persons) => {
+    return person.name === 'Ann'
+})
+
+const annId = personData.findIndex((person, id, persons) => {
+    return person.name === 'Ann'
+})
+
+console.log(ann)
+console.log(annId)
+console.log(ann.name = 'Anna')
