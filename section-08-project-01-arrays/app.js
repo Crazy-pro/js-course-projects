@@ -144,3 +144,9 @@ const copiedPersons = [...persons.map(person => ({name: person.name, age: person
 persons[0].age = 21
 persons.push({name:'Anna', age: 26})
 console.log(persons, copiedPersons)
+
+const nameData = ['Alex', 'Klimchuk']
+// const firstName = nameData[0]
+// const lastName = nameData[1]
+const [firstName, lastName, ...otherData] = nameData
+console.log(firstName, lastName, otherData)
