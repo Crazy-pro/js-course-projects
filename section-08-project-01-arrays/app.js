@@ -130,3 +130,17 @@ const firstLastName = ['Alex', 'Klimchuk']
 const fullName = firstLastName.join()
 console.log(fullName)
 
+const elements = [...firstLastName]
+firstLastName.push('Ivanovich')
+console.log(firstLastName, elements)
+
+
+console.log(Math.min(...prices))
+console.log(Math.max(...prices))
+
+const persons = [{name:'Alex', age: 25}, {name:'Andrew', age: 25, hobbies: []}, {name:'Ann', age: 25, hobbies: []}]
+const copiedPersons = [...persons.map(person => ({name: person.name, age: person.age}))]
+
+persons[0].age = 21
+persons.push({name:'Anna', age: 26})
+console.log(persons, copiedPersons)
