@@ -1,6 +1,11 @@
+const movies = document.getElementById('movie-list')
+
+movies.style['background-color'] = 'red'
+movies.style.display = 'block'
+
 const person = {
-  name: 'Alex',
-  age: 25,
+  'first Name': 'Alex',
+  'age': 25,
   hobbies: ['Sports', 'Cooking'],
   greet: function() {
     alert('Hi there!');
@@ -15,3 +20,4 @@ person.age = 26
 person.greet();
 
 console.log(person)
+console.log(person['first Name'])
