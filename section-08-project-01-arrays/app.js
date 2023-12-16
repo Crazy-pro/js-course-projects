@@ -118,3 +118,15 @@ console.log(filteredArr)
 const sum = prices.reduce((prevVal, curVal, curId, prices) => {
     return prevVal + curVal
 }, 0)
+
+console.log(sum)
+
+const data = 'new york;10.89;1247'
+const arr = data.split(';')
+arr[1] = +'1247369732'
+console.log(arr)
+
+const firstLastName = ['Alex', 'Klimchuk']
+const fullName = firstLastName.join()
+console.log(fullName)
+
