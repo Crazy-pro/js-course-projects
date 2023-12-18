@@ -20,11 +20,11 @@ function getMaxLifeValues() {
   const enteredValue = prompt('MAx life for u and the moster', '100')
   const parsedValue = parseInt(eneteredValue)
 
-  if(isNaN(parsedValue) || parsedValue <= 0){
+  if (isNaN(parsedValue) || parsedValue <= 0) {
     throw {
-        message: 'Invalid user Input!',
-        statusCode: '409'
-      }
+      message: 'Invalid user Input!',
+      statusCode: '409'
+    }
   }
   return parsedValue
 }
@@ -32,7 +32,7 @@ function getMaxLifeValues() {
 let chosenMaxLife
 try {
   chosenMaxLife = getMaxLifeValues()
-} catch (error){
+} catch (error) {
   // chosenMaxLife = 100
   // alert('U inputed invalid value. Default value of 100 was applied!')
   // throw error;
@@ -53,23 +53,23 @@ function reset() {
   resetGame(chosenMaxLife)
 }
 
-function writeToLog(event, value, monsterHealth, playerHealth){
+function writeToLog(event, value, monsterHealth, playerHealth) {
   let logEntry = {
     event: event,
     value: value,
     finalMonsterHealth: monsterHealth,
     finalPlayerHealth: playerHealth
   }
-  switch(event){
+  switch (event) {
     case LOG_EVENT_PLAYER_ATTACK:
-      case LOG_EVENT_PLAYER_STRONG_ATTACK:
-          logEntry.target = 'MONSTER'
-          break;
+    case LOG_EVENT_PLAYER_STRONG_ATTACK:
+      logEntry.target = 'MONSTER'
+      break;
     case LOG_EVENT_MONSTER_ATTACK:
-      case LOG_EVENT_PLAYER_HEAL:
-        case LOG_EVENT_GAME_OVER:
-          logEntry.target = 'PLAYER'
-          break;
+    case LOG_EVENT_PLAYER_HEAL:
+    case LOG_EVENT_GAME_OVER:
+      logEntry.target = 'PLAYER'
+      break;
   }
   battleLog.push(logEntry)
 }
@@ -80,7 +80,7 @@ function endRound() {
   currentPlayerHealth -= playerDamage
   writeToLog(LOG_EVENT_MONSTER_ATTACK, playerDamage, currentMonsterHealth, currentPlayerHealth)
 
-  if(currentPlayerHealth <= 0 && hasBonusLife){
+  if (currentPlayerHealth <= 0 && hasBonusLife) {
     hasBonusLife = false
     removeBonusLife()
     currentPlayerHealth = initialPlayerHealth
@@ -99,7 +99,7 @@ function endRound() {
     writeToLog(LOG_EVENT_GAME_OVER, 'A DRAW', currentMonsterHealth, currentPlayerHealth)
   }
 
-  if(currentMonsterHealth <= 0 || currentPlayerHealth <= 0){
+  if (currentMonsterHealth <= 0 || currentPlayerHealth <= 0) {
     reset()
   }
 }
@@ -130,7 +130,7 @@ function strongAttackHandler() {
 
 function healPlayerHandler() {
   let healValue
-  if(currentPlayerHealth >= chosenMaxLife - HEAL_VALUE) {
+  if (currentPlayerHealth >= chosenMaxLife - HEAL_VALUE) {
     alert('You cannot heal urself to over than max health!')
     healValue = chosenMaxLife - currentPlayerHealth
   } else {
@@ -142,7 +142,7 @@ function healPlayerHandler() {
   endRound()
 }
 
-function showLogshandler(){
+function showLogshandler() {
   // for(let i = 0; i < battleLog.length; i++){
   //   console.log(battleLog[i])
   // }
@@ -157,17 +157,17 @@ function showLogshandler(){
   // } while(k < battleLog.length)
 
   let = 0
-  outerLoop: for(const log of battleLog){
+  outerLoop: for (const log of battleLog) {
     // if(!lastLogEntry && lastLogEntry !== 0 || lastLogEntry < i){
-      console.log(`#${i++}`)
-      // continue
-      // continue outerLoop
-      for(const key in log){
-        console.log(`${key}: ${log[key]}`)
-      }
-      lastLogEntry = i
-      // break
-      // break outerLoop
+    console.log(`#${i++}`)
+    // continue
+    // continue outerLoop
+    for (const key in log) {
+      console.log(`${key}: ${log[key]}`)
+    }
+    lastLogEntry = i
+    // break
+    // break outerLoop
     // }
   }
 }

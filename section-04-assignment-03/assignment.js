@@ -30,7 +30,7 @@ while (counter < numbers.length) {
 let k = 0
 do {
   console.log(numbers[k++])
-} while (k < numbers.length) 
+} while (k < numbers.length)
 
 // for loop => backwards
 for (let i = numbers.length - 1; i >= 0; i--) {

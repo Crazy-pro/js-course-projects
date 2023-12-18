@@ -30,22 +30,22 @@ function writeToLog(
 }
 
 // if-else statements
-function calculateResult(calcType){
+function calculateResult(calcType) {
   const enteredNum = getUserNumberInput()
   const initialResult = currentResult
 
   let mathOperator
 
-  if(calcType === 'add'){
+  if (calcType === 'add') {
     currentResult += enteredNum
     mathOperator = '+'
-  } else if(calcType === 'substract'){
+  } else if (calcType === 'substract') {
     currentResult -= enteredNum
     mathOperator = '-'
-  } else if(calcType === 'multiply'){
+  } else if (calcType === 'multiply') {
     currentResult *= enteredNum
     mathOperator = '*'
-  } else if(calcType === 'divide'){
+  } else if (calcType === 'divide') {
     currentResult /= enteredNum
     mathOperator = '/'
   }
