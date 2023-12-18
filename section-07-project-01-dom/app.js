@@ -11,7 +11,7 @@ const li = document.querySelector('li:last-of-type')
 li.textContent = li.textContent + ' (Changed!)'
 
 const body = document.body
-body.querySelector('header') 
+body.querySelector('header')
 
 const listItemElements = document.getElementsByTagName('li')
 
