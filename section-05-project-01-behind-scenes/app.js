@@ -14,8 +14,8 @@
 
 var firstName = 'Max'
 
-if (firstName === 'Max'){
-    var hobbies = ['GYM','Boxing']
+if (firstName === 'Max') {
+    var hobbies = ['GYM', 'Boxing']
     console.log(hobbies)
 }
 
@@ -23,7 +23,7 @@ function getFirstName() {
     return prompt('Your name: ', '')
 }
 
-function greet(){
+function greet() {
     var age = 30
     var firstName = getFirstName()
     console.log(firstName, age)
@@ -41,6 +41,6 @@ var lastName = 'Anderson'
 // "someText"
 // surName = 'something'
 
-let person = { name: 'Alex'}
+let person = { name: 'Alex' }
 
 person = null
