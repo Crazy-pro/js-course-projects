@@ -21,7 +21,7 @@ class ShopingCart {
 
     set cartItems(items){
         this.items = items
-        this.totalOutput.innerHTML = `<h2>Total: \$${this.totalAmount}</h2>`
+        this.totalOutput.innerHTML = `<h2>Total: \$${this.totalAmount.toiFixed(2)}</h2>`
     }
 
     addProduct(product) {
@@ -136,6 +136,3 @@ class App {
 }
 
 App.init()
-
-const productList = new ProductList()
-productList.render()
