@@ -13,7 +13,7 @@ class Product {
 }
 
 class ElementAttribute {
-    constructor(attrName, attrValue){
+    constructor(attrName, attrValue) {
         this.name = attrName
         this.value = attrValue
     }
@@ -22,11 +22,11 @@ class ElementAttribute {
 class Component {
     addRootElement(tag, cssClass, attributes) {
         const rootElement = document.createElement(tag)
-        if(cssClass) {
+        if (cssClass) {
             rootElement.className = cssClass
         }
-        if(attributes && attributes.length > 0) {
-            for(const attr of attributes) {
+        if (attributes && attributes.length > 0) {
+            for (const attr of attributes) {
                 rootElement.setAttribute(attr.name, attr.value)
             }
         }
@@ -40,7 +40,7 @@ class ShopingCart {
         return this.items.reduce(() => prevValue + curItem.price, 0)
     }
 
-    set cartItems(items){
+    set cartItems(items) {
         this.items = items
         this.totalOutput.innerHTML = `<h2>Total: \$${this.totalAmount.toiFixed(2)}</h2>`
     }
@@ -64,15 +64,15 @@ class ShopingCart {
 }
 
 class ProductItem {
-    constructor(product){
+    constructor(product) {
         this.product = product
     }
 
-    addToCart(){
+    addToCart() {
         App.addProductToCart(this.product)
     }
 
-    render(){
+    render() {
         const productLi = document.createElement('li')
         productLi.className = 'product-item'
         productLi.innerHTML = `
@@ -95,26 +95,26 @@ class ProductItem {
 class ProductList {
     products = [
         new Product(
-            'A sofa', 
-            'https://leatherexpressions.com/wp-content/uploads/2018/09/divani-sofa.jpg', 
-            2399, 
+            'A sofa',
+            'https://leatherexpressions.com/wp-content/uploads/2018/09/divani-sofa.jpg',
+            2399,
             'A soft sofa'
         ),
         new Product(
-            'A sofa', 
-            'https://leatherexpressions.com/wp-content/uploads/2018/06/image-44.jpg', 
+            'A sofa',
+            'https://leatherexpressions.com/wp-content/uploads/2018/06/image-44.jpg',
             5399,
             'A soft sofa'
         ),
         new Product(
-            'A sofa', 
-            'https://leatherexpressions.com/wp-content/uploads/2018/06/image-36.jpg', 
-            3399, 
+            'A sofa',
+            'https://leatherexpressions.com/wp-content/uploads/2018/06/image-36.jpg',
+            3399,
             'A soft sofa'
         )
     ]
 
-    constructor() {}
+    constructor() { }
 
     render() {
         const productUl = document.createElement('ul')
@@ -150,8 +150,8 @@ class App {
         shop.render()
         this.cart = shop.cart
     }
-    
-    static addProductToCart(product){
+
+    static addProductToCart(product) {
         this.cart.addProduct(product)
     }
 }
