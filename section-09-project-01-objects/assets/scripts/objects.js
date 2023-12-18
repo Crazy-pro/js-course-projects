@@ -12,7 +12,7 @@ const person = {
   hobbies: ['Sports', 'Cooking'],
   [userChosenKeyName]: '...',
   greet: function () {
-    alert('Hi there!');
+    alert('Hi there!')
   },
   1.5: 'hello'
 }
@@ -22,7 +22,7 @@ person.age = 26
 // delete person.age
 // person.age = undefined
 // person.age = null
-person.greet();
+person.greet()
 
 const keyName = 'first Name'
 console.log(person)

@@ -35,7 +35,7 @@ try {
 } catch (error) {
   // chosenMaxLife = 100
   // alert('U inputed invalid value. Default value of 100 was applied!')
-  // throw error;
+  // throw error
 } finally {
   chosenMaxLife = 100
   alert('U inputed invalid value. Default value of 100 was applied!')
@@ -64,12 +64,12 @@ function writeToLog(event, value, monsterHealth, playerHealth) {
     case LOG_EVENT_PLAYER_ATTACK:
     case LOG_EVENT_PLAYER_STRONG_ATTACK:
       logEntry.target = 'MONSTER'
-      break;
+      break
     case LOG_EVENT_MONSTER_ATTACK:
     case LOG_EVENT_PLAYER_HEAL:
     case LOG_EVENT_GAME_OVER:
       logEntry.target = 'PLAYER'
-      break;
+      break
   }
   battleLog.push(logEntry)
 }

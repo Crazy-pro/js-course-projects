@@ -20,7 +20,10 @@ class ElementAttribute {
 }
 
 class Component {
-    addRootElement(tag, cssClass, attributes) {
+    constructor(renderHookId) {
+        this.hookId = renderHookId
+    }
+    createRootElement(tag, cssClass, attributes) {
         const rootElement = document.createElement(tag)
         if (cssClass) {
             rootElement.className = cssClass
@@ -30,10 +33,12 @@ class Component {
                 rootElement.setAttribute(attr.name, attr.value)
             }
         }
+        document.getElementById(this.hookId).append(rootElement)
+        return rootElement
     }
 }
 
-class ShopingCart {
+class ShopingCart extends Component {
     items = []
 
     get totalAmount() {
@@ -45,6 +50,10 @@ class ShopingCart {
         this.totalOutput.innerHTML = `<h2>Total: \$${this.totalAmount.toiFixed(2)}</h2>`
     }
 
+    constructor(renderHookId) {
+        super(renderHookId)
+    }
+
     addProduct(product) {
         const updatedItems = [...this.items]
         updatedItems.push(product)
@@ -52,14 +61,12 @@ class ShopingCart {
     }
 
     render() {
-        const cartEl = document.createElement('section')
+        const cartEl = this.createRootElement('section', 'cart')
         cartEl.innerHTML = `
             <h2>Total: \$${0}</h2>
             <button>Order Now</button>
         `
-        cartEl.className = 'cart'
         this.totalOutput = cartEl.querySelector('h2')
-        return cartEl
     }
 }
 
