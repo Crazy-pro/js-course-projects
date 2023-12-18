@@ -14,8 +14,8 @@ const renderMovies = (filter = '') => {
   }
   movieList.innerHTML = ''
 
-  const filteredMovies = !filter 
-    ? movies 
+  const filteredMovies = !filter
+    ? movies
     : movies.filter(movie => movie.info.title.includes(filter))
 
   filteredMovies.forEach((movie) => {
@@ -59,7 +59,7 @@ const addMovieHandler = () => {
         return this._title
       },
       set title(val) {
-        if(val.trim() === ''){
+        if (val.trim() === '') {
           this._title = 'DEFAULT'
           return
         }

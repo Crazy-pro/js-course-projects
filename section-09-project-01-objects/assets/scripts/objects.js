@@ -11,7 +11,7 @@ const person = {
   'age': 25,
   hobbies: ['Sports', 'Cooking'],
   [userChosenKeyName]: '...',
-  greet: function() {
+  greet: function () {
     alert('Hi there!');
   },
   1.5: 'hello'
