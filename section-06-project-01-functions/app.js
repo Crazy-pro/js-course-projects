@@ -12,11 +12,11 @@ let gameIsRunning = false
 
 const getPlayerChoice = () => {
     const selection = prompt(`${ROCK}, ${PAPER} or ${SCISSORS}?`, '').toUpperCase()
-    if(
+    if (
         selection !== ROCK &&
         selection !== PAPER &&
         selection !== SCISSORS
-    ){
+    ) {
         alert(`Invalid choice! We chose ${DEFAULT_USER_CHOICE} for u!`)
         return
     }
@@ -25,9 +25,9 @@ const getPlayerChoice = () => {
 
 const getComputerChoice = () => {
     const randomChoice = Math.random()
-    if(randomChoice < 0.34) {
+    if (randomChoice < 0.34) {
         return ROCK
-    } else if(randomChoice < 0.67) {
+    } else if (randomChoice < 0.67) {
         return PAPER
     } else {
         return SCISSORS
@@ -35,17 +35,17 @@ const getComputerChoice = () => {
 }
 
 const getWinner = (computerChoice, playerChoice = DEFAULT_USER_CHOICE) => {
-    return playerChoice === computerChoice 
-    ? RESULT_DRAW 
-    : ( playerChoice === ROCK && computerChoice === SCISSORS ||
-        playerChoice === PAPER && computerChoice === ROCK ||
-        playerChoice === SCISSORS && computerChoice === PAPER ) 
+    return playerChoice === computerChoice
+        ? RESULT_DRAW
+        : (playerChoice === ROCK && computerChoice === SCISSORS ||
+            playerChoice === PAPER && computerChoice === ROCK ||
+            playerChoice === SCISSORS && computerChoice === PAPER)
             ? RESULT_PLAYER_WINS
             : RESULT_COMPUTER_WINS
 }
 
 startGameBtn.addEventListener('click', () => {
-    if(gameIsRunning){
+    if (gameIsRunning) {
         return
     }
     gameIsRunning = true
@@ -53,18 +53,18 @@ startGameBtn.addEventListener('click', () => {
     const playerChoice = getPlayerChoice()
     const computerChoice = getComputerChoice()
     let winner
-    if(playerChoice){
+    if (playerChoice) {
         getWinner(computerChoice, playerChoice)
     } else {
         getWinner(computerChoice)
     }
     let message = `You picked ${playerChoice || DEFAULT_USER_CHOICE} and computer picked ${computerChoice}. You `
-    if(winner === RESULT_DRAW) {
-        message += 'have a draw.' 
-    } else if(winner === RESULT_DRAW) {
-        message += 'won.' 
+    if (winner === RESULT_DRAW) {
+        message += 'have a draw.'
+    } else if (winner === RESULT_DRAW) {
+        message += 'won.'
     } else {
-        message += 'lost.' 
+        message += 'lost.'
     }
     alert(message)
 })
@@ -73,8 +73,8 @@ const combine = (resultHandler, operator, ...nums) => {
     const validateNumber = (num) => isNaN(num) ? 0 : num
 
     let sum = 0
-    for(const num of nums){
-        if(operator === 'ADD') {
+    for (const num of nums) {
+        if (operator === 'ADD') {
             sum += validateNumber(num)
         } else {
             sum -= validateNumber(num)
@@ -99,9 +99,9 @@ showResult.call
 
 showResult.apply
 
-combine(showResult.bind(this, 'The result after adding all numbers is: ' ), 'ADD', 1, 3, 4, 'sdfsdf', 5, 6, 7)
-combine(showResult.bind(this, 'The result after adding all numbers is: ' ), 'ADD', 1, 3, 4, 5, 6, 9, 7)
-combine(showResult.bind(this, 'The result after substracting all numbers is: ' ), 'SUBSTRACT', 1, 3, 4, 5, 6, 7)
+combine(showResult.bind(this, 'The result after adding all numbers is: '), 'ADD', 1, 3, 4, 'sdfsdf', 5, 6, 7)
+combine(showResult.bind(this, 'The result after adding all numbers is: '), 'ADD', 1, 3, 4, 5, 6, 9, 7)
+combine(showResult.bind(this, 'The result after substracting all numbers is: '), 'SUBSTRACT', 1, 3, 4, 5, 6, 7)
 
 // const start = function startGame() {
 //     console.log('Game is starting...')
