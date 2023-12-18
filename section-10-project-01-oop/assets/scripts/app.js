@@ -12,6 +12,27 @@ class Product {
     }
 }
 
+class ElementAttribute {
+    constructor(attrName, attrValue){
+        this.name = attrName
+        this.value = attrValue
+    }
+}
+
+class Component {
+    addRootElement(tag, cssClass, attributes) {
+        const rootElement = document.createElement(tag)
+        if(cssClass) {
+            rootElement.className = cssClass
+        }
+        if(attributes && attributes.length > 0) {
+            for(const attr of attributes) {
+                rootElement.setAttribute(attr.name, attr.value)
+            }
+        }
+    }
+}
+
 class ShopingCart {
     items = []
 
