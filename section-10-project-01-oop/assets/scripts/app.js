@@ -20,9 +20,11 @@ class ElementAttribute {
 }
 
 class Component {
-    constructor(renderHookId) {
+    constructor(renderHookId, shouldRender = true) {
         this.hookId = renderHookId
-        this.render()
+        if (shouldRender) {
+            this.render()
+        }
     }
 
     render() { }
@@ -49,13 +51,18 @@ class ShopingCart extends Component {
         return this.items.reduce((prevValue, curItem) => prevValue + curItem.price, 0)
     }
 
-    set cartItems(items) {
-        this.items = items
+    set cartItems(value) {
+        this.items = value
         this.totalOutput.innerHTML = `<h2>Total: \$${this.totalAmount.toFixed(2)}</h2>`
     }
 
     constructor(renderHookId) {
-        super(renderHookId)
+        super(renderHookId, false)
+        this.orderProducts = () => {
+            console.log('Ordering...')
+            console.log(this.items)
+        }
+        this.render()
     }
 
     addProduct(product) {
@@ -70,14 +77,18 @@ class ShopingCart extends Component {
             <h2>Total: \$${0}</h2>
             <button>Order Now</button>
         `
+        const orderButton = document.querySelector('button')
+        // orderButton.addEventListener('click', () => this.orderProducts())
+        orderButton.addEventListener('click', this.orderProducts)
         this.totalOutput = cartEl.querySelector('h2')
     }
 }
 
 class ProductItem extends Component {
     constructor(product, productId) {
-        super(productId)
+        super(productId, false)
         this.product = product
+        this.render()
     }
 
     addToCart() {
@@ -103,37 +114,49 @@ class ProductItem extends Component {
 }
 
 class ProductList extends Component {
-    products = [
-        new Product(
-            'A sofa',
-            'https://leatherexpressions.com/wp-content/uploads/2018/09/divani-sofa.jpg',
-            2399,
-            'A soft sofa'
-        ),
-        new Product(
-            'A sofa',
-            'https://leatherexpressions.com/wp-content/uploads/2018/06/image-44.jpg',
-            5399,
-            'A soft sofa'
-        ),
-        new Product(
-            'A sofa',
-            'https://leatherexpressions.com/wp-content/uploads/2018/06/image-36.jpg',
-            3399,
-            'A soft sofa'
-        )
-    ]
+    products = []
 
     constructor(renderHookId) {
         super(renderHookId)
+        this.fetchProducts()
+    }
+
+    fetchProducts() {
+        this.products = [
+            new Product(
+                'A sofa',
+                'https://leatherexpressions.com/wp-content/uploads/2018/09/divani-sofa.jpg',
+                2399,
+                'A soft sofa'
+            ),
+            new Product(
+                'A sofa',
+                'https://leatherexpressions.com/wp-content/uploads/2018/06/image-44.jpg',
+                5399,
+                'A soft sofa'
+            ),
+            new Product(
+                'A sofa',
+                'https://leatherexpressions.com/wp-content/uploads/2018/06/image-36.jpg',
+                3399,
+                'A soft sofa'
+            )
+        ]
+        this.renderProducts()
+    }
+
+    renderProducts() {
+        for (const product of this.products) {
+            new ProductItem(product, 'prod-list')
+        }
     }
 
     render() {
         this.createRootElement('ul', 'product-list', [
             new ElementAttribute('id', 'prod-list')
         ])
-        for (const product of this.products) {
-            new ProductItem(product, 'prod-list')
+        if (this.products && this.products.length > 0) {
+            this.renderProducts()
         }
     }
 }
