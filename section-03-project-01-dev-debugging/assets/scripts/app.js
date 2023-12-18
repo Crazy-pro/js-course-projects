@@ -1,16 +1,16 @@
 const defaultResult = 0
 let currentResult = defaultResult
 
-function getUserEnteredNum(){
+function getUserEnteredNum() {
   return +usrInput.value // use + or add parseInt() method to fix error
 }
 
-function createAndWriteOutput(operator, resultBeforeCalculation, calculationNum){
+function createAndWriteOutput(operator, resultBeforeCalculation, calculationNum) {
   const calcDescription = `${resultBeforeCalculation} ${operator} ${calculationNum}`
   outputResult(currentResult, calcDescription)
 }
 
-function writeToLog(operator, prevResult, number, newResult){
+function writeToLog(operator, prevResult, number, newResult) {
   let logEntry = {
     operation: operator,
     initValue: prevResult,
@@ -41,17 +41,17 @@ comment
  * format
  */
 
-function increment() { 
+function increment() {
   // currentResult++
   ++currentResult
 }
 
-function decrement() { 
+function decrement() {
   currentResult--
   // --currentResult
 }
 
-function add() { 
+function add() {
   const enteredNum = getUserEnteredNum()
   const initialResult = currentResult
   currentResult += enteredNum
@@ -59,7 +59,7 @@ function add() {
   writeToLog('Add', initialResult, enteredNum, currentResult)
 }
 
-function substract() { 
+function substract() {
   const enteredNum = getUserEnteredNum()
   const initialResult = currentResult
   currentResult -= enteredNum
@@ -67,7 +67,7 @@ function substract() {
   writeToLog('Substract', initialResult, enteredNum, currentResult)
 }
 
-function multiply() { 
+function multiply() {
   const enteredNum = getUserEnteredNum()
   const initialResult = currentResult
   currentResult *= enteredNum
@@ -75,7 +75,7 @@ function multiply() {
   writeToLog('Multiply', initialResult, enteredNum, currentResult)
 }
 
-function divide() { 
+function divide() {
   const enteredNum = getUserEnteredNum()
   const initialResult = currentResult
   currentResult /= enteredNum
@@ -87,19 +87,19 @@ function calculate(operation) {
   const enteredNum = getUserEnteredNum()
   const initialResult = currentResult
   let operator
-  if(operation === 'ADD'){
+  if (operation === 'ADD') {
     currentResult += enteredNum
     operator = '+'
-  } else if(operation === 'SUBSTRACT'){
+  } else if (operation === 'SUBSTRACT') {
     currentResult -= enteredNum
     operator = '-'
-  } else if(operation === 'MULTIPLY'){
+  } else if (operation === 'MULTIPLY') {
     currentResult *= enteredNum
     operator = '*'
-  } else if(operation === 'DIVIDE'){
+  } else if (operation === 'DIVIDE') {
     currentResult /= enteredNum
     operator = '/'
-  } 
+  }
   createAndWriteOutput(operator, initialResult, enteredNum)
   writeToLog(operation, initialResult, enteredNum, currentResult)
 }
