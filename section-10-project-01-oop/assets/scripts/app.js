@@ -12,6 +12,20 @@ class Product {
     }
 }
 
+class ShopingCart {
+    items = []
+
+    render() {
+        const cartEl = document.createElement('section')
+        cartEl.innerHTML = `
+            <h2>Total: \$${0}</h2>
+            <button>Order Now</button>
+        `
+        cartEl.className = 'cart'
+        return cartEl
+    }
+}
+
 class ProductItem {
     constructor(product){
         this.product = product
@@ -66,7 +80,6 @@ class ProductList {
     constructor() {}
 
     render() {
-        const renderHook = document.getElementById('app')
         const productUl = document.createElement('ul')
         productUl.className = 'product-list'
         for (const product of this.products) {
@@ -74,7 +87,21 @@ class ProductList {
             const productLi = productItem.render()
             productUl.append(productLi)
         }
-        renderHook.append(productUl)
+        return productUl
+    }
+}
+
+class Shop {
+    render() {
+        const renderHook = document.getElementById('app')
+
+        const cart = new ShopingCart()
+        const cartEl = cart.render()
+        const productUl = new ProductList()
+        const productLi = productUl.render()
+        renderHook.append(cartEl)
+        renderHook.append(productLi)
+
     }
 }
 
