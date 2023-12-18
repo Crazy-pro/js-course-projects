@@ -48,12 +48,13 @@ class ShopingCart extends Component {
     items = []
 
     get totalAmount() {
-        return this.items.reduce((prevValue, curItem) => prevValue + curItem.price, 0)
+        const sum = this.items.reduce((prevValue, curItem) => prevValue + curItem.price, 0)
+        return sum.toFixed(2)
     }
 
     set cartItems(value) {
         this.items = value
-        this.totalOutput.innerHTML = `<h2>Total: \$${this.totalAmount.toFixed(2)}</h2>`
+        this.totalOutput.innerHTML = `<h2>Total: \$${this.totalAmount}</h2>`
     }
 
     constructor(renderHookId) {
@@ -114,39 +115,40 @@ class ProductItem extends Component {
 }
 
 class ProductList extends Component {
-    products = []
+    #products = []
 
     constructor(renderHookId) {
-        super(renderHookId)
+        super(renderHookId, false)
+        this.render()
         this.fetchProducts()
     }
 
     fetchProducts() {
-        this.products = [
+        this.#products = [
             new Product(
                 'A sofa',
                 'https://leatherexpressions.com/wp-content/uploads/2018/09/divani-sofa.jpg',
-                2399,
-                'A soft sofa'
+                'A soft sofa',
+                2399
             ),
             new Product(
                 'A sofa',
                 'https://leatherexpressions.com/wp-content/uploads/2018/06/image-44.jpg',
-                5399,
-                'A soft sofa'
+                'A soft sofa',
+                5399
             ),
             new Product(
                 'A sofa',
                 'https://leatherexpressions.com/wp-content/uploads/2018/06/image-36.jpg',
-                3399,
-                'A soft sofa'
+                'A soft sofa',
+                3399
             )
         ]
         this.renderProducts()
     }
 
     renderProducts() {
-        for (const product of this.products) {
+        for (const product of this.#products) {
             new ProductItem(product, 'prod-list')
         }
     }
@@ -155,7 +157,7 @@ class ProductList extends Component {
         this.createRootElement('ul', 'product-list', [
             new ElementAttribute('id', 'prod-list')
         ])
-        if (this.products && this.products.length > 0) {
+        if (this.#products && this.#products.length > 0) {
             this.renderProducts()
         }
     }
