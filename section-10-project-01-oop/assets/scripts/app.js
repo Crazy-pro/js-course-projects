@@ -22,7 +22,11 @@ class ElementAttribute {
 class Component {
     constructor(renderHookId) {
         this.hookId = renderHookId
+        this.render()
     }
+
+    render() { }
+
     createRootElement(tag, cssClass, attributes) {
         const rootElement = document.createElement(tag)
         if (cssClass) {
@@ -42,12 +46,12 @@ class ShopingCart extends Component {
     items = []
 
     get totalAmount() {
-        return this.items.reduce(() => prevValue + curItem.price, 0)
+        return this.items.reduce((prevValue, curItem) => prevValue + curItem.price, 0)
     }
 
     set cartItems(items) {
         this.items = items
-        this.totalOutput.innerHTML = `<h2>Total: \$${this.totalAmount.toiFixed(2)}</h2>`
+        this.totalOutput.innerHTML = `<h2>Total: \$${this.totalAmount.toFixed(2)}</h2>`
     }
 
     constructor(renderHookId) {
@@ -125,21 +129,23 @@ class ProductList extends Component {
     }
 
     render() {
-        const productUl = this.createRootElement('ul', 'product-list', [new ElementAttribute('id', 'prod-list')])
+        this.createRootElement('ul', 'product-list', [
+            new ElementAttribute('id', 'prod-list')
+        ])
         for (const product of this.products) {
-            const productItem = new ProductItem(product, 'prod-list')
-            productItem.render()
+            new ProductItem(product, 'prod-list')
         }
-        return productUl
     }
 }
 
 class Shop {
+    constructor() {
+        this.render()
+    }
+
     render() {
         this.cart = new ShopingCart('app')
-        this.cart.render()
-        const productUl = new ProductList('app')
-        productUl.render()
+        new ProductList('app')
     }
 }
 
@@ -148,7 +154,6 @@ class App {
 
     static init() {
         const shop = new Shop()
-        shop.render()
         this.cart = shop.cart
     }
 
