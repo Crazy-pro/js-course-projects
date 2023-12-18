@@ -15,9 +15,19 @@ class Product {
 class ShopingCart {
     items = []
 
+    get totalAmount() {
+        return this.items.reduce(() => prevValue + curItem.price, 0)
+    }
+
+    set cartItems(items){
+        this.items = items
+        this.totalOutput.innerHTML = `<h2>Total: \$${this.totalAmount}</h2>`
+    }
+
     addProduct(product) {
-        this.items.push(product)
-        this.totalOutput.innerHTML = `<h2>Total: \$${1}</h2>`
+        const updatedItems = [...this.items]
+        updatedItems.push(product)
+        this.cartItems = updatedItems
     }
 
     render() {
@@ -105,9 +115,9 @@ class Shop {
         const cartEl = cart.render()
         const productUl = new ProductList()
         const productLi = productUl.render()
+
         renderHook.append(cartEl)
         renderHook.append(productLi)
-
     }
 }
 
