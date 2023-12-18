@@ -37,7 +37,7 @@
 
 // console.log(personData.size)
 
-let person = {name:'Alex'}
+let person = { name: 'Alex' }
 
 const persons = new WeakSet()
 persons.add(person)

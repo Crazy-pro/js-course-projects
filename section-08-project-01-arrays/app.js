@@ -94,16 +94,16 @@ const prices = [10, 59, 56.98]
 const tax = 0.19
 
 const taxAdjustedPrices = prices.map((price, id, prices) => {
-    const priceObject = { index: id, taxAdjustedPrice: price * (1 + tax)}
+    const priceObject = { index: id, taxAdjustedPrice: price * (1 + tax) }
     return priceObject
 })
 console.log(prices, taxAdjustedPrices)
 
 const sortedPrices = prices.sort()
 const revercedSortedPrices = prices.sort((a, b) => {
-    if(a > b)
+    if (a > b)
         return 1
-    else if(a===b)
+    else if (a === b)
         return 0
     else
         return -1
@@ -138,11 +138,11 @@ console.log(firstLastName, elements)
 console.log(Math.min(...prices))
 console.log(Math.max(...prices))
 
-const persons = [{name:'Alex', age: 25}, {name:'Andrew', age: 25, hobbies: []}, {name:'Ann', age: 25, hobbies: []}]
-const copiedPersons = [...persons.map(person => ({name: person.name, age: person.age}))]
+const persons = [{ name: 'Alex', age: 25 }, { name: 'Andrew', age: 25, hobbies: [] }, { name: 'Ann', age: 25, hobbies: [] }]
+const copiedPersons = [...persons.map(person => ({ name: person.name, age: person.age }))]
 
 persons[0].age = 21
-persons.push({name:'Anna', age: 26})
+persons.push({ name: 'Anna', age: 26 })
 console.log(persons, copiedPersons)
 
 const nameData = ['Alex', 'Klimchuk']
