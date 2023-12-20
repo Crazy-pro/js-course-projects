@@ -16,5 +16,20 @@ function Person() {
     this.greet = () => console.log(`Hi there. I\'m ${this.name} I\'m ${this.age} years old.`)
 }
 
+Person.prototype = {
+    printAge() {
+        console.log(`${this.age} years old.`)
+    }
+}
+
 const person = new Person()
 person.greet()
+person.printAge()
+
+console.dir(Person)
+
+console.log(person.toString())
+console.log(person.__proto__)
+console.log(person.__proto__.constructor)
+console.log(person.__proto__.__proto__)
+console.log(person.__proto__ === Person.prototype)
