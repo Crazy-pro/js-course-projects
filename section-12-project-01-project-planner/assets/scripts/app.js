@@ -31,13 +31,12 @@ class Component {
 
     attach() {
         this.hostElement.insertAdjacentElement(this.insertBefore ? 'afterbegin' : 'beforeend', this.element)
-        document.body.append(this.element)
     }
 }
 
 class Tooltip extends Component {
     constructor(closeNotifierFunction) {
-        super(/*'active-projects', true*/)
+        super('active-projects', true)
         this.closeNotifier = closeNotifierFunction
         this.create()
     }
@@ -50,7 +49,7 @@ class Tooltip extends Component {
     create() {
         const tooltipElement = document.createElement('div')
         tooltipElement.className = 'card'
-        tooltipElement.textContent = 'DUMMY!'
+        tooltipElement.textContent = 'Dummy Tooltip Text!'
         tooltipElement.addEventListener('click', this.closeTooltip)
         this.element = tooltipElement
     }
@@ -67,7 +66,7 @@ class ProjectItem {
     }
 
     showMoreInfoHandler() {
-        if (hasActiveTooltip) {
+        if (this.hasActiveTooltip) {
             return
         }
         const tooltip = new Tooltip(() => {
@@ -80,7 +79,7 @@ class ProjectItem {
     connectMoreInfoButton() {
         const projectItemElement = document.getElementById(this.id)
         const moreInfoButton = projectItemElement.querySelector('button:first-of-type')
-        moreInfoButton.addEventListener('click', this.showMoreInfoHandler)
+        moreInfoButton.addEventListener('click', this.showMoreInfoHandler.bind(this))
     }
 
     connectSwitchButton(type) {
@@ -93,7 +92,7 @@ class ProjectItem {
 
     update(updateProjectsFunction, type) {
         this.updateProjectsHandler = updateProjectsFunction
-        this.connectSwitchButton()
+        this.connectSwitchButton(type)
     }
 }
 
