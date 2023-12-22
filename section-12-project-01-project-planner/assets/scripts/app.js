@@ -7,6 +7,15 @@ class ProjectItem {
         this.id = id
     }
 
+    connectMoreInfoButton() {
+
+    }
+
+    connectSwitchButton() {
+        const projectItemElement = document.getElementById(this.id)
+        const switchButton = document.querySelector('button:last-of-type')
+        switchButton.addEventListener('click',)
+    }
 }
 
 class ProjectList {
@@ -18,6 +27,17 @@ class ProjectList {
             this.projects.push(new ProjectItem(projectItem.id))
         }
         console.log(this.projects)
+    }
+
+    addProject() {
+
+    }
+
+    switchProject(projectId) {
+        // const projectIndex = this.projects.findIndex(p => p.id === projectId)
+        // this.projects.splice(projectIndex, 1)
+        this.addProject()
+        this.projects = this.projects.filter(p => p.id !== projectId)
     }
 }
 
