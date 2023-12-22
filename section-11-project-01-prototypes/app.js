@@ -61,10 +61,48 @@ class Person extends AgedPerson {
 
 // console.dir(Object.prototype.__proto__)
 
-const person = new Person()
-const person2 = new Person()
-person.greet()
-console.log(person)
+// const person = new Person()
+// const person2 = new Person()
+// person.greet()
+// console.log(person)
 
-const button = document.getElementById('btn')
-button.addEventListener('click', person.greet.bind(person))
+// const button = document.getElementById('btn')
+// button.addEventListener('click', person.greet.bind(person))
+
+
+const course = {
+    title: 'JS',
+    rating: 5
+}
+
+// console.log(Object.getPrototypeOf(course))
+Object.setPrototypeOf(course, {
+    // ...Object.getPrototypeOf(course),
+    printRating: function () {
+        console.log(`Course rating - ${this.rating}/5`)
+    }
+})
+// console.log(course.__proto__)
+
+course.printRating()
+
+const student = Object.create({
+    printProgress: function () {
+        console.log(`Course progress - ${this.progress}/100%`)
+    }
+}, {
+    name: {
+        configurable: true,
+        enumerable: true,
+        writable: false,
+        value: 'Alex'
+    }
+})
+
+Object.defineProperty(student, 'progress', {
+    configurable: true,
+    enumerable: true,
+    writable: false,
+    value: 0.99
+})
+console.log(student)
