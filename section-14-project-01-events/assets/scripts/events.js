@@ -4,12 +4,14 @@ const button = document.querySelector('button')
 
 // }
 
-// const buttonClickHandler = () => {
-//     alert('Button was clicked!')
-// }
+const buttonClickHandler = () => {
+    alert('Button was clicked!')
+}
 
 // button.onclick = buttonClickHandler
 
-button.addEventListener('click',)
+button.addEventListener('click', buttonClickHandler)
 
-button.removeEventListener()
+setTimeout(() => {
+    button.removeEventListener('click', buttonClickHandler)
+}, 2000)
