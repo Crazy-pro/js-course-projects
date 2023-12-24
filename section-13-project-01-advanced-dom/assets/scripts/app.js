@@ -88,7 +88,7 @@ class ProjectItem {
       return
     }
     const projectElement = document.getElementById(this.id)
-    const tooltipText = projectElement.dataset.extrainfo
+    const tooltipText = projectElement.dataset.extraInfo
     const tooltip = new Tooltip(() => {
       this.hasActiveTooltip = false
     }, tooltipText, this.id)
@@ -123,7 +123,7 @@ class ProjectList {
     this.type = type
     const projectItems = document.querySelectorAll(`#${type}-projects li`)
     for (const projectItem of projectItems) {
-      this.projects.push(new ProjectItem(projectItem.id, this.switchProject.bind(this)), this.type)
+      this.projects.push(new ProjectItem(projectItem.id, this.switchProject.bind(this), this.type))
     }
     console.log(this.projects)
   }
