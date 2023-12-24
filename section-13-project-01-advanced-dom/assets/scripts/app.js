@@ -51,7 +51,10 @@ class Tooltip extends Component {
   create() {
     const tooltipElement = document.createElement('div')
     tooltipElement.className = 'card'
-    tooltipElement.textContent = this.text
+    const tooltipTemplate = document.getElementById('tooltip')
+    const tooltipBody = document.importNode(tooltipTemplate.content, true)
+    tooltipBody.querySelector('p').textContent = this.text
+    tooltipElement.append(tooltipBody)
 
     const hostElementPosLeft = this.hostElement.offsetLeft
     const hostElementPosTop = this.hostElement.offsetTop
@@ -145,7 +148,7 @@ class ProjectList {
 
 class App {
   static init() {
-    const activeProjects = new ProjectList('active',)
+    const activeProjects = new ProjectList('active')
     const finishedProjects = new ProjectList('finished')
     activeProjects.setSwitchHandler(finishedProjects.addProject.bind(finishedProjects))
     finishedProjects.setSwitchHandler(activeProjects.addProject.bind(activeProjects))
