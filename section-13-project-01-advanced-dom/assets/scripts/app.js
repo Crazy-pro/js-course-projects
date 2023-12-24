@@ -153,12 +153,16 @@ class App {
     activeProjects.setSwitchHandler(finishedProjects.addProject.bind(finishedProjects))
     finishedProjects.setSwitchHandler(activeProjects.addProject.bind(activeProjects))
 
-    document.getElementById('start-analytics-button').addEventListener('click', this.startAnalytics)
+    const timerId = setTimeout(this.startAnalytics, 3000)
+
+    document
+      .getElementById('stop-analytics-button')
+      .addEventListener('click', () => clearTimeout(timerId))
   }
 
   static startAnalytics() {
     const analyticsScript = document.createElement('script')
-    analyticsScript.src = 'assets/script/analytics.js'
+    analyticsScript.src = 'assets/scripts/analytics.js'
     analyticsScript.defer = true
     document.head.append(analyticsScript)
   }
