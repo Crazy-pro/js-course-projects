@@ -1,7 +1,8 @@
 const buttons = document.querySelectorAll('button')
 
 const buttonClickHandler = event => {
-    event.target.disabled = true
+    // event.target.disabled = true
+    console.log(event)
 }
 
 // button.onclick = function () {
@@ -20,5 +21,9 @@ const buttonClickHandler = event => {
 
 
 buttons.forEach((button) => {
-    button.addEventListener('click', buttonClickHandler)
+    button.addEventListener('mouseenter', buttonClickHandler)
+})
+
+window.addEventListener('scroll', event => {
+    console.log(event)
 })
