@@ -152,6 +152,9 @@ class App {
     const finishedProjects = new ProjectList('finished')
     activeProjects.setSwitchHandler(finishedProjects.addProject.bind(finishedProjects))
     finishedProjects.setSwitchHandler(activeProjects.addProject.bind(activeProjects))
+    const someScript = document.createElement('script')
+    someScript.textContent = 'alert("Hi there")'
+    document.head.append(someScript)
   }
 }
 
