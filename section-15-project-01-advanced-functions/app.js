@@ -37,15 +37,20 @@ printHobbies()
 // const vatAmount = calculateTax(100, 0.19)
 // const incomeAmount = calculateTax(100, 0.25)
 
+let multiplier = 1.1
+
 function createTaxCalculator(tax) {
     function calculateTax(amount) {
-        return amount * tax
+        console.log(multiplier)
+        return amount * tax * multiplier
     }
     return calculateTax
 }
 
 const calculateVatAmount = createTaxCalculator(0.19)
 const calculateIncomeAmount = createTaxCalculator(0.25)
+
+multiplier = 1.2
 
 console.log(calculateVatAmount(100))
 console.log(calculateVatAmount(200))
