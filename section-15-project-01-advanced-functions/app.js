@@ -14,8 +14,6 @@ function addMoreNumbers(num1, num2) {
     return sum
 }
 
-
-
 console.log(add(5, 9))
 console.log(addRandom(7))
 console.log(addMoreNumbers(7, 13))
@@ -27,4 +25,29 @@ function printHobbies() {
     console.log(hobbies)
 }
 
-printHobbies
+printHobbies()
+
+// function sendDataToServer() {
+// }
+
+// function calculateTax(amount) {
+//     return amount * tax
+// }
+
+// const vatAmount = calculateTax(100, 0.19)
+// const incomeAmount = calculateTax(100, 0.25)
+
+function createTaxCalculator(tax) {
+    function calculateTax(amount) {
+        return amount * tax
+    }
+    return calculateTax
+}
+
+const calculateVatAmount = createTaxCalculator(0.19)
+const calculateIncomeAmount = createTaxCalculator(0.25)
+
+console.log(calculateVatAmount(100))
+console.log(calculateVatAmount(200))
+console.log(calculateIncomeAmount(250))
+console.log(calculateIncomeAmount(350))
