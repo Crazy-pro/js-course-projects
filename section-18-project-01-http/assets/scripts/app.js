@@ -7,6 +7,8 @@ const postList = document.querySelector('ul')
 const sendHttpRequest = (method, url, data) => {
     // const promise = new Promise((resolve, reject) => {
     // const xmlHttpRequest = new XMLHttpRequest()
+    
+    // xmlHttpRequest.setRequestHeader('Content-Type', 'application/json')
 
     // xmlHttpRequest.open(method, url)
 
@@ -35,7 +37,10 @@ const sendHttpRequest = (method, url, data) => {
         url,
         {
             method: method,
-            body: JSON.stringify(data)
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
         }
     ).then(response => {
         // response.text()
@@ -47,7 +52,7 @@ const sendHttpRequest = (method, url, data) => {
 const baseUrl = 'https://jsonplaceholder.typicode.com/'
 const getPostsUrl = baseUrl + 'posts'
 const postPostUrl = baseUrl + 'posts'
-const deletePostUrl = baseUrl + 'posts'
+const deletePostUrl = baseUrl + 'posts/'
 
 async function fetchPosts() {
     // try {
