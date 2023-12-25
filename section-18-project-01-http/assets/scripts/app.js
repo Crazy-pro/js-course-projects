@@ -38,10 +38,11 @@ const sendHttpRequest = (method, url, data) => {
         url,
         {
             method: method,
-            body: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            body: data,
+            // body: JSON.stringify(data),
+            // headers: {
+            //     'Content-Type': 'application/json'
+            // }
         }
     )
         .then(response => {
@@ -91,7 +92,14 @@ async function createPost(title, content) {
         body: content,
         userId: userId
     }
-    sendHttpRequest('POST', postPostUrl, post)
+
+    const formData = new FormData(form)
+    formData.append('title', title)
+    formData.append('body', content)
+    formData.append('id', userId)
+    // formData.append('someFile', 'SomeFileName.jpg')
+
+    sendHttpRequest('POST', postPostUrl, formData)
 }
 
 fetchButton.addEventListener('click', fetchPosts)
