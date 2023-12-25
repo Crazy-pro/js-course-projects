@@ -69,3 +69,23 @@ let name = 'Alex'
 userName = 'Ann'
 
 greetUser()
+
+// function powerOf(value, power) {
+//     let result = 1
+//     for (let i = 0; i < power; i++) {
+//         result *= value
+//     }
+//     return result
+// }
+
+// function powerOf(value, power) {
+//     if (power === 1)
+//         return value
+//     return value * powerOf(value, power - 1)
+// }
+
+function powerOf(value, power) {
+    return (power === 1) ? value : value * powerOf(value, power - 1)
+}
+
+console.log(powerOf(2, 3))
