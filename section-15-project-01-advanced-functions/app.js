@@ -89,3 +89,45 @@ function powerOf(value, power) {
 }
 
 console.log(powerOf(2, 3))
+
+const myself = {
+    name: 'Alex',
+    friends: [
+        {
+            name: 'Max',
+            friends: [
+                {
+                    name: 'Ann',
+                    friends: [
+                        {
+                            name: 'Ann',
+                            friends: [
+                                {
+                                    name: 'Ann'
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            name: 'Julia'
+        }
+    ]
+}
+
+function getFriendNames(person) {
+    const collectedNames = []
+    if (!person.friends) {
+        return []
+    }
+
+    for (const friend of person.friends) {
+        collectedNames.push(friend.name)
+        collectedNames.push(...getFriendNames(friend))
+    }
+    return collectedNames
+}
+
+console.log(getFriendNames(myself))
