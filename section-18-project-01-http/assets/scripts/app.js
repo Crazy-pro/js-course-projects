@@ -7,7 +7,7 @@ const postList = document.querySelector('ul')
 const sendHttpRequest = (method, url, data) => {
     // const promise = new Promise((resolve, reject) => {
     // const xmlHttpRequest = new XMLHttpRequest()
-    
+
     // xmlHttpRequest.setRequestHeader('Content-Type', 'application/json')
 
     // xmlHttpRequest.open(method, url)
@@ -19,6 +19,7 @@ const sendHttpRequest = (method, url, data) => {
     //     if (xmlHttpRequest.status >= 200 && xmlHttpRequest.status < 300) {
     //         resolve(xmlHttpRequest.response)
     //     } else {
+    //         xmlHttpRequest.response
     //         reject(new Error('Something went wrong!'))
     //     }
     //     // console.log(posts)
@@ -42,11 +43,24 @@ const sendHttpRequest = (method, url, data) => {
                 'Content-Type': 'application/json'
             }
         }
-    ).then(response => {
-        // response.text()
-        // response.blob()
-        return response.json()
-    })
+    )
+        .then(response => {
+            // response.text()
+            // response.blob()
+            if (response.status >= 200 & response.status < 300) {
+                return response.json()
+            } else {
+                return response.json()
+                    .then(errorData => {
+                        console.log(errorData)
+                        new Error('Something went wrong on the server side!')
+                    })
+            }
+        })
+        .catch(error => {
+            console.log(error)
+            new Error('Something went wrong!')
+        })
 }
 
 const baseUrl = 'https://jsonplaceholder.typicode.com/'
