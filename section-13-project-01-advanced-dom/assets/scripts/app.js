@@ -81,6 +81,7 @@ class ProjectItem {
     this.updateProjectsHandler = updateProjectsFunction
     this.connectMoreInfoButton()
     this.connectSwitchButton(type)
+    this.connectDrag()
   }
 
   showMoreInfoHandler() {
@@ -94,6 +95,13 @@ class ProjectItem {
     }, tooltipText, this.id)
     tooltip.attach()
     this.hasActiveTooltip = true
+  }
+
+  connectDrag() {
+    document.getElementById(this.id).addEventListener('dragstart', event => {
+      event.dataTransfer.setData('text/plain', this.id)
+      event.dataTransfer.effectAllowed = 'move'
+    })
   }
 
   connectMoreInfoButton() {
@@ -153,11 +161,11 @@ class App {
     activeProjects.setSwitchHandler(finishedProjects.addProject.bind(finishedProjects))
     finishedProjects.setSwitchHandler(activeProjects.addProject.bind(activeProjects))
 
-    const timerId = setTimeout(this.startAnalytics, 3000)
+    // const timerId = setTimeout(this.startAnalytics, 3000)
 
-    document
-      .getElementById('stop-analytics-button')
-      .addEventListener('click', () => clearTimeout(timerId))
+    // document
+    //   .getElementById('stop-analytics-button')
+    //   .addEventListener('click', () => clearTimeout(timerId))
   }
 
   static startAnalytics() {
