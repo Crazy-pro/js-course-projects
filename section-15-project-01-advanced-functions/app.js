@@ -56,3 +56,16 @@ console.log(calculateVatAmount(100))
 console.log(calculateVatAmount(200))
 console.log(calculateIncomeAmount(250))
 console.log(calculateIncomeAmount(350))
+
+let userName = 'Alex'
+
+function greetUser() {
+    let name = 'Ann'
+    console.log('Hi ' + name)
+}
+
+let name = 'Alex'
+
+userName = 'Ann'
+
+greetUser()
