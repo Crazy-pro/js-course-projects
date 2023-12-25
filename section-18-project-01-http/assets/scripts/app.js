@@ -30,7 +30,14 @@ const sendHttpRequest = (method, url, data) => {
 
     // xmlHttpRequest.send(JSON.stringify(data))
     // })
-    return fetch(url).then(response => {
+    // return promise
+    return fetch(
+        url,
+        {
+            method: method,
+            body: JSON.stringify(data)
+        }
+    ).then(response => {
         // response.text()
         // response.blob()
         return response.json()
