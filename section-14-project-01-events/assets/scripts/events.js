@@ -42,7 +42,7 @@ div.addEventListener('mouseenter', event => {
     console.log(event)
 }/*, true*/)
 
-button.addEventListener('mouseenter', event => {
+button.addEventListener('click', event => {
     event.stopPropagation()
     console.log('Clicked Button')
     console.log(event)
@@ -55,11 +55,13 @@ button.addEventListener('mouseenter', event => {
 //     listItem.addEventListener('click', event => {
 //         event.target.classList.toggle('highlight')
 //     })
-// });
+// })
 
 const list = document.querySelector('ul')
 list.addEventListener('click', event => {
     console.log(event.currentTarget)
     // event.target.classList.toggle('highlight')
     event.target.closest('li').classList.toggle('highlight')
+    // form.sumbit()
+    button.click()
 })
