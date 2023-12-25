@@ -21,9 +21,11 @@ const sendHttpRequest = (method, url, data) => {
             }
             // console.log(posts)
         }
+
         xmlHttpRequest.onerror = function () {
             console.log(xmlHttpRequest.response)
             console.log(xmlHttpRequest.status)
+            reject(new Error('Failed to send request!'))
         }
 
         xmlHttpRequest.send(JSON.stringify(data))
