@@ -5,32 +5,36 @@ const fetchButton = document.querySelector('#available-posts button')
 const postList = document.querySelector('ul')
 
 const sendHttpRequest = (method, url, data) => {
-    const promise = new Promise((resolve, reject) => {
-        const xmlHttpRequest = new XMLHttpRequest()
+    // const promise = new Promise((resolve, reject) => {
+    // const xmlHttpRequest = new XMLHttpRequest()
 
-        xmlHttpRequest.open(method, url)
+    // xmlHttpRequest.open(method, url)
 
-        xmlHttpRequest.responseType = 'json'
+    // xmlHttpRequest.responseType = 'json'
 
-        xmlHttpRequest.onload = function () {
-            // const posts = JSON.parse(xmlHttpRequest.response)
-            if (xmlHttpRequest.status >= 200 && xmlHttpRequest.status < 300) {
-                resolve(xmlHttpRequest.response)
-            } else {
-                reject(new Error('Something went wrong!'))
-            }
-            // console.log(posts)
-        }
+    // xmlHttpRequest.onload = function () {
+    //     // const posts = JSON.parse(xmlHttpRequest.response)
+    //     if (xmlHttpRequest.status >= 200 && xmlHttpRequest.status < 300) {
+    //         resolve(xmlHttpRequest.response)
+    //     } else {
+    //         reject(new Error('Something went wrong!'))
+    //     }
+    //     // console.log(posts)
+    // }
 
-        xmlHttpRequest.onerror = function () {
-            console.log(xmlHttpRequest.response)
-            console.log(xmlHttpRequest.status)
-            reject(new Error('Failed to send request!'))
-        }
+    // xmlHttpRequest.onerror = function () {
+    //     console.log(xmlHttpRequest.response)
+    //     console.log(xmlHttpRequest.status)
+    //     reject(new Error('Failed to send request!'))
+    // }
 
-        xmlHttpRequest.send(JSON.stringify(data))
+    // xmlHttpRequest.send(JSON.stringify(data))
+    // })
+    return fetch(url).then(response => {
+        // response.text()
+        // response.blob()
+        return response.json()
     })
-    return promise
 }
 
 const baseUrl = 'https://jsonplaceholder.typicode.com/'
@@ -39,19 +43,19 @@ const postPostUrl = baseUrl + 'posts'
 const deletePostUrl = baseUrl + 'posts'
 
 async function fetchPosts() {
-    try {
-        const responseData = await sendHttpRequest('GET', getPostsUrl)
-        const posts = responseData
-        for (const post of posts) {
-            const postElement = document.importNode(postTemplate.content, true)
-            postElement.querySelector('h2').textContent = post.title.toUpperCase()
-            postElement.querySelector('p').textContent = post.body
-            postElement.querySelector('li').id = post.id
-            listElement.append(postElement)
-        }
-    } catch (error) {
-        alert(error.message)
+    // try {
+    const responseData = await sendHttpRequest('GET', getPostsUrl)
+    const posts = responseData
+    for (const post of posts) {
+        const postElement = document.importNode(postTemplate.content, true)
+        postElement.querySelector('h2').textContent = post.title.toUpperCase()
+        postElement.querySelector('p').textContent = post.body
+        postElement.querySelector('li').id = post.id
+        listElement.append(postElement)
     }
+    // } catch (error) {
+    //     alert(error.message)
+    // }
 }
 
 async function createPost(title, content) {
