@@ -14,8 +14,16 @@ const sendHttpRequest = (method, url, data) => {
 
         xmlHttpRequest.onload = function () {
             // const posts = JSON.parse(xmlHttpRequest.response)
-            resolve(xmlHttpRequest.response)
+            if (xmlHttpRequest.status >= 200 && xmlHttpRequest.status < 300) {
+                resolve(xmlHttpRequest.response)
+            } else {
+                reject(new Error('Something went wrong!'))
+            }
             // console.log(posts)
+        }
+        xmlHttpRequest.onerror = function () {
+            console.log(xmlHttpRequest.response)
+            console.log(xmlHttpRequest.status)
         }
 
         xmlHttpRequest.send(JSON.stringify(data))
@@ -29,14 +37,18 @@ const postPostUrl = baseUrl + 'posts'
 const deletePostUrl = baseUrl + 'posts'
 
 async function fetchPosts() {
-    const responseData = await sendHttpRequest('GET', getPostsUrl)
-    const posts = responseData
-    for (const post of posts) {
-        const postElement = document.importNode(postTemplate.content, true)
-        postElement.querySelector('h2').textContent = post.title.toUpperCase()
-        postElement.querySelector('p').textContent = post.body
-        postElement.querySelector('li').id = post.id
-        listElement.append(postElement)
+    try {
+        const responseData = await sendHttpRequest('GET', getPostsUrl)
+        const posts = responseData
+        for (const post of posts) {
+            const postElement = document.importNode(postTemplate.content, true)
+            postElement.querySelector('h2').textContent = post.title.toUpperCase()
+            postElement.querySelector('p').textContent = post.body
+            postElement.querySelector('li').id = post.id
+            listElement.append(postElement)
+        }
+    } catch (error) {
+        alert(error.message)
     }
 }
 
