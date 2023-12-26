@@ -1,4 +1,4 @@
-import { ProjectList } from './App/ProjectList.js'
+import { ProjectList } from './App/ProjectList'
 
 class App {
   static init() {
@@ -20,7 +20,7 @@ class App {
 
   static startAnalytics() {
     const analyticsScript = document.createElement('script')
-    analyticsScript.src = 'assets/scripts/Utility/Analytics.js'
+    analyticsScript.src = 'assets/scripts/Utility/Analytics'
     analyticsScript.defer = true
     document.head.append(analyticsScript)
   }

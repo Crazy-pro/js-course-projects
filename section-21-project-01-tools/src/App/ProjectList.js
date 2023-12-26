@@ -1,5 +1,5 @@
-import { DOMHelper } from '../Utility/DOMHelper.js'
-import { ProjectItem } from './ProjectItem.js'
+import { DOMHelper } from '../Utility/DOMHelper'
+import { ProjectItem } from './ProjectItem'
 
 export class ProjectList {
   projects = []
