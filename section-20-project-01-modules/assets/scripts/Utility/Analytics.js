@@ -1,4 +1,4 @@
-const intervalId = setInterval(() => {
+export const intervalId = setInterval(() => {
   console.log('Sending analytics data...')
 }, 2000)
 
