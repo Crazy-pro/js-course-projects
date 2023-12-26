@@ -1,13 +1,11 @@
 {
-  "name": "JavaScript course projects",
+  "name": "javascript-complete-guide",
   "version": "1.0.0",
   "description": "JavaScript - The Complete Guide",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "eslint": "^8.56.0",
-    "serve": "^14.2.1"
-  }
+  "author": "Maximilian Schwarzmueller",
+  "license": "ISC"
 }
