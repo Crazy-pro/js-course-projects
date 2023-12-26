@@ -1,7 +1,7 @@
-import * as _ from 'lodash'
+// import * as _ from 'lodash'
 import { ProjectList } from './App/ProjectList'
 
-console.log(_.difference([1, 3, 4, 6, 7, 4], [5, 6, 7, 4, 3]))
+// console.log(_.difference([1, 3, 4, 6, 7, 4], [5, 6, 7, 4, 3]))
 
 class App {
   static init() {
