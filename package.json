@@ -7,9 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "cross-env": "^7.0.3",
     "serve": "^14.2.1"
   },
   "devDependencies": {
-    "eslint": "^8.56.0"
-  }
+    "eslint": "^8.56.0",
+    "webpack": "^5.89.0"
+  },
+  "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack",
+  "build:dev": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack-dev-server"
 }
