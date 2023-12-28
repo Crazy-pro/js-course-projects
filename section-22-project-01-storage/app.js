@@ -3,13 +3,20 @@ const retrieveButton = document.getElementById('retrieve-btn')
 
 const dbRequest = indexedDB.open('StorageDummy', 1)
 
+let db
+
+dbRequest.onsuccess = function (event) {
+    db = event.target.result
+}
+
 dbRequest.onupgradeneeded = function (event) {
-    const db = event.target.result
+    db = event.target.result
 
     const objectStore = db.createObjectStore('products', { keyPath: 'id' })
 
     objectStore.transaction.oncomplete = function (event) {
-        const productsStore = db.transaction('products', 'readwrite')
+        const productsStore = db
+            .transaction('products', 'readwrite')
             .objectStore('products')
         productsStore.add({
             id: 'p1',
@@ -25,20 +32,29 @@ dbRequest.onerror = function (event) {
 }
 
 storeButton.addEventListener('click', () => {
-    const userId = 'u123'
-    const user = {
-        name: 'Max',
-        age: 30,
-        hobbies: ['Sports', 'Cooking']
+    if (!db) {
+        return
     }
-    document.cookie = `uid=${userId}; max-age=360`
-    document.cookie = `user=${JSON.stringify(user)}`
+
+    const productsStore = db
+        .transaction('products', 'readwrite')
+        .objectStore('products')
+    productsStore.add({
+        id: 'p2',
+        title: 'A first Product',
+        price: 1232.99,
+        tags: ['Expensive', 'Luxury']
+    })
 })
 
 retrieveButton.addEventListener('click', () => {
-    console.log(document.cookie)
-    const cookieData = document.cookie.split(';')
-    const data = cookieData.map(i => i.trim())
-    console.log(data[1].split('=')[1])
-})
+    const productsStore = db
+        .transaction('products', 'readwrite')
+        .objectStore('products')
 
+    const request = productsStore.get('p2')
+
+    request.onsuccess = function () {
+        console.log(request.result)
+    }
+})
