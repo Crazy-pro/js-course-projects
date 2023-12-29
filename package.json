@@ -10,6 +10,7 @@
     "build:prod": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack --confid webpack.config.prod.js"
   },
   "dependencies": {
+    "core-js": "^3.35.0",
     "cross-env": "^7.0.3",
     "lodash": "^4.17.21",
     "serve": "^14.2.1"
