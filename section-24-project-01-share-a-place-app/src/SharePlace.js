@@ -1,4 +1,4 @@
-import { getCoordsFromAddress } from './Utility/Location'
+import { getAddressFromCoords, getCoordsFromAddress } from './Utility/Location'
 import { Modal } from './UI/Modal'
 import { Map } from './UI/Map'
 
@@ -6,8 +6,10 @@ class PlaceFinder {
   constructor() {
     const addressForm = document.querySelector('form')
     const locateUserButton = document.getElementById('locate-btn')
+    this.shareButton = document.getElementById('share-btn')
 
     locateUserButton.addEventListener('click', this.locateUserHandler.bind(this))
+    this.shareButton.addEventListener('click')
     addressForm.addEventListener('submit', this.findAddressHandler.bind(this))
   }
 
@@ -17,6 +19,12 @@ class PlaceFinder {
     } else {
       this.map = new Map(coordinates)
     }
+    this.shareButton.disabled = false
+    const sharedLinkInputElement = document.getElementById('share-link')
+    sharedLinkInputElement.value = `${location.origin}/my-place
+    ?address=${encodeURI(address)}
+    &lat=${coordinates.lat}
+    &lng=${coordinates.lng}`
   }
 
   locateUserHandler() {
@@ -31,13 +39,14 @@ class PlaceFinder {
     modal.show()
 
     navigator.geolocation.getCurrentPosition(
-      successResult => {
-        modal.hide()
+      async successResult => {
         const coordinates = {
           lat: successResult.coords.latitude + Math.random() * 50,
           lng: successResult.coords.longitude + Math.random() * 50,
         }
-        this.selectPlace(coordinates)
+        const address = await getAddressFromCoords(coordinates)
+        modal.hide()
+        this.selectPlace(coordinates, address)
       },
       error => {
         modal.hide()
@@ -59,7 +68,7 @@ class PlaceFinder {
     modal.show()
     try {
       const coordinates = await getCoordsFromAddress(address)
-      this.selectPlace(coordinates)
+      this.selectPlace(coordinates, address)
     } catch (err) {
       alert(err.message)
     }
