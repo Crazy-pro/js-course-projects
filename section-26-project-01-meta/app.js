@@ -1,7 +1,7 @@
 // Library land 
 const uid = Symbol()
 console.log(uid)
- 
+
 const user = {
   // id: 'p1',
   [uid]: 'p1',
