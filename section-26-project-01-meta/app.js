@@ -46,7 +46,7 @@ const company = {
   //   //   employee = company.next()
   //   // }
   //   let currentEmployee = 0
-  //   while (!currentEmployee < this.employees.length) {
+  //   while (currentEmployee < this.employees.length) {
   //     yield this.employees[currentEmployee]
   //     currentEmployee++
   //   }
@@ -59,7 +59,7 @@ const company = {
     //   employee = company.next()
     // }
     let currentEmployee = 0
-    while (!currentEmployee < this.employees.length) {
+    while (currentEmployee < this.employees.length) {
       yield this.employees[currentEmployee]
       currentEmployee++
     }
@@ -73,9 +73,9 @@ const company = {
 //   employee = company.next()
 // }
 
-// for (const employee of company) {
-//   console.log(employee)
-// }
+for (const employee of company) {
+  console.log(employee)
+}
 
 // console.log([...company])
 
@@ -108,3 +108,30 @@ Reflect.setPrototypeOf(course, {
 // delete course.title
 
 console.log(course.toString())
+
+const courseHandler = {
+  get(object, propertyName) {
+    console.log(propertyName)
+    if (propertyName === 'length') {
+      return 0
+    }
+    return object[propertyName] || 'Not Found!'
+  },
+  set(object, propertyName, newValue) {
+    console.log('Sending Data...')
+    if (propertyName === 'rating') {
+      return
+    }
+    object[propertyName] = newValue
+  }
+}
+
+const projectProxy = new Proxy(course, courseHandler)
+
+console.log(projectProxy.title)
+console.log(course)
+console.log(projectProxy)
+console.log(course.title)
+console.log(projectProxy.length)
+
+projectProxy.rating = 5
