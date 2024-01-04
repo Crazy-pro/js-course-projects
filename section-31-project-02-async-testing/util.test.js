@@ -2,7 +2,7 @@
 
 const { loadTitle } = require('./util')
 
-test('should print an uppercase text', () => {
+test('Should print an UpperCase text', () => {
   loadTitle().then(title => {
     expect(title).toBe('DELECTUS AUT AUTEM')
   })
