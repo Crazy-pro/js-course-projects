@@ -4,12 +4,12 @@ JS Course Projects are a set of simple demo projects from 'JS - The Complete Gui
 
 
 ### How to start:
-- Read HOW-TO-USE.pdf
+- Just open any index.html file in browser.
 
 
 
 ### Technologies:
-- Programming languages: JavaScript;
+- Programming languages: JavaScript, TypeScript;
 - Frameworks: Node JS;
 - IDE: Visual Studio Code;
 - Tools: Axios, Postman, NPM, Git, HTML, CSS, HTTPs, XML, YAML, JSON;
