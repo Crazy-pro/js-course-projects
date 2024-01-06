@@ -59,14 +59,8 @@ class Tooltip extends HTMLElement {
       this._tooltipText = this.getAttribute('text')
     }
     this._tooltipIcon = this.shadowRoot.querySelector('span')
-    this._tooltipIcon.addEventListener(
-      'mouseenter',
-      this._showTooltip.bind(this)
-    )
-    this._tooltipIcon.addEventListener(
-      'mouseleave',
-      this._hideTooltip.bind(this)
-    )
+    this._tooltipIcon.addEventListener('mouseenter', this._showTooltip.bind(this))
+    this._tooltipIcon.addEventListener('mouseleave', this._hideTooltip.bind(this))
     this._render()
   }
 
