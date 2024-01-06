@@ -6,7 +6,7 @@ class InfoToggle extends HTMLElement {
     this.shadowRoot.innerHTML = `
         <style>
             #info-box {
-                display: none
+                display: none;
             }
         </style>
         <button>Show</button>

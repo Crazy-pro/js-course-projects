@@ -7,10 +7,10 @@ class Tooltip extends HTMLElement {
     this.shadowRoot.innerHTML = `
         <style>
             div {
-                background-color: black
-                color: white
-                position: absolute
-                z-index: 10
+                background-color: black;
+                color: white;
+                position: absolute;
+                z-index: 10;
             }
         </style>
         <slot>Some default slot</slot>
